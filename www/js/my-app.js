@@ -42,9 +42,9 @@ function recibe(){
                   localStorage.setItem('ipc', data.indicador.ipc);
 		          localStorage.setItem('utm', data.indicador.utm);
 		          localStorage.setItem('imacec', data.indicador.imacec);
-                  localStorage.setItem('normal', data.restriccion.normal);
-                  localStorage.setItem('normal_maniana', data.restriccion.normal_maniana);
-                  localStorage.setItem('catalitico', data.restriccion.catalitico);
+                  localStorage.setItem('normal', data.restriccion.normal[0]);
+                  localStorage.setItem('normal_maniana', data.restriccion.normal_maniana[0]);
+                  localStorage.setItem('catalitico', data.restriccion.catalitico[0]);
                   myApp.hidePreloader();
                   myApp.alert("Mensaje <3",'Inicio de Aplición');
                   window.location = "main.html";
