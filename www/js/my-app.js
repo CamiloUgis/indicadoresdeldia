@@ -11,18 +11,19 @@ var mainView = myApp.addView('.view-main', {
 });
 document.addEventListener('deviceready', function(){
   $('#sub').bind('click', recibe);
-  $('#santoralA').html(localStorage.getItem('santoralAyer'));
-  $('#santoralH').html(localStorage.getItem('santoralHoy'));
-  $('#santoralM').html(localStorage.getItem('santoralManiana'));
+  $('#ayer').html(localStorage.getItem('ayer'));
+  $('#hoy').html(localStorage.getItem('hoy'));
+  $('#maniana').html(localStorage.getItem('maniana'));
   //$('#euro').html(localStorage.getItem('euro'));
   //$('#dolar').html(localStorage.getItem('dolar'));
   $('uf').html(localStorage.getItem('uf'));
   $('ipc').html(localStorage.getItem('ipc'));
   $('utm').html(localStorage.getItem('utm'));
   $('imacec').html(localStorage.getItem('imacec'));
-    
-  //con el resto 
-  //  $('#nombre de id en el archivo index').html(localStorage.getItem('el que recibo en json'));
+  $('normal').html(localStorage.getItem('normal'));
+  $('normal_maniana').html(localStorage.getItem('normal_maniana'));
+  $('catalitico').html(localStorage.getItem('catalitico'));
+
 }, false);
 
 function recibe(){
@@ -32,15 +33,18 @@ function recibe(){
           type: 'POST',
           url: 'http://indicadoresdeldia.cl/webservice/indicadores.json',
           success: function (data, status, xhr) {
-                  localStorage.setItem('santoralAyer', data.santoral.ayer);
-		          localStorage.setItem('santoralHoy', data.santoral.hoy);
-		          localStorage.setItem('santoralManiana', data.santoral.maniana);
+                  localStorage.setItem('ayer', data.santoral.ayer);
+		          localStorage.setItem('hoy', data.santoral.hoy);
+		          localStorage.setItem('maniana', data.santoral.maniana);
 		          //localStorage.setItem('dolar', data.moneda.dolar);
 		          //localStorage.setItem('euro', data.moneda.euro);
 		          localStorage.setItem('uf', data.indicador.uf);
                   localStorage.setItem('ipc', data.indicador.ipc);
 		          localStorage.setItem('utm', data.indicador.utm);
 		          localStorage.setItem('imacec', data.indicador.imacec);
+                  localStorage.setItem('normal', data.restriccion.normal);
+                  localStorage.setItem('normal_maniana', data.restriccion.normal_maniana);
+                  localStorage.setItem('catalitico', data.restriccion.catalitico);
                   myApp.hidePreloader();
                   myApp.alert("Mensaje <3",'Inicio de Aplición');
                   window.location = "main.html";

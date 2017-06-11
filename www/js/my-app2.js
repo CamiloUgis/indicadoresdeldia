@@ -11,13 +11,16 @@ var mainView = myApp.addView('.view-main', {
 });
 
 document.addEventListener('deviceready', function(){
+  $('#ayer').html(localStorage.getItem('ayer'));
   $('#hoy').html(localStorage.getItem('hoy'));
   $('#maniana').html(localStorage.getItem('maniana'));
-  $('#ayer').html(localStorage.getItem('ayer'));
   $('#uf').html(localStorage.getItem('uf'));
   $('#ipc').html(localStorage.getItem('ipc'));
   $('#utm').html(localStorage.getItem('utm'));
   $('#imacec').html(localStorage.getItem('imacec'));
-  $('dolar').html(localStorage.getItem('dolar')); 
-  $('euro').html(localStorage.getItem('euro'));
+  $('#normal').html(localStorage.getItem('normal'));
+  $('#normal_maniana').html(localStorage.getItem('normal_maniana'));
+  $('#catalitico').html(localStorage.getItem('catalitico'));
+  //$('#euro').html(localStorage.getItem('euro'));
+  //$('#dolar').html(localStorage.getItem('dolar'));
 }, false);
