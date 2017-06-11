@@ -9,45 +9,46 @@ var mainView = myApp.addView('.view-main', {
     // Because we use fixed-through navbar we can enable dynamic navbar
     dynamicNavbar: true
 });
-
 document.addEventListener('deviceready', function(){
-    console.log('ready');
-    $('#sub').bind('click', enviar);
+  $('#sub').bind('click', recibe);
+  $('#santoralA').html(localStorage.getItem('santoralAyer'));
+  $('#santoralH').html(localStorage.getItem('santoralHoy'));
+  $('#santoralM').html(localStorage.getItem('santoralManiana'));
+  //$('#euro').html(localStorage.getItem('euro'));
+  //$('#dolar').html(localStorage.getItem('dolar'));
+  $('uf').html(localStorage.getItem('uf'));
+  $('ipc').html(localStorage.getItem('ipc'));
+  $('utm').html(localStorage.getItem('utm'));
+  $('imacec').html(localStorage.getItem('imacec'));
+    
+  //con el resto 
+  //  $('#nombre de id en el archivo index').html(localStorage.getItem('el que recibo en json'));
 }, false);
 
-function enviar(){
-    var login = $('#user').val();
-      myApp.showPreloader('Obteniendo información...');
+function recibe(){
+      myApp.showPreloader('Recibiendo datos...');
       $.ajax({
           dataType: 'json',
-          type: 'GET',
-          data: {
-              login: login
-          },
+          type: 'POST',
           url: 'http://indicadoresdeldia.cl/webservice/indicadores.json',
           success: function (data, status, xhr) {
-                  localStorage.setItem('santoralA', data.data.ayer);
-                  localStorage.setItem('santoralH', data.data.hoy);
-                  localStorage.setItem('santoralM', data.data.maniana);
-                  //localStorage.setItem('dolar', data.data.dolar);
-                 // localStorage.setItem('euro', data.data.euro);
-                  localStorage.setItem('uf', data.data.uf);
-                  localStorage.setItem('ipc', data.data.ipc );
-                  localStorage.setItem('utm', data.data.utm);
-                  localStorage.setItem('imacec', data.data.imacec);
-                  if(('#santoralH').equals(('#login'))){
-                      myApp.showPreloader('¡Felicidades por su santoral!');
-                  }else{
-                      if(('#santoralA').equals(('#login'))){
-                            myApp.showPreloader('Ayer fue su santoral, ¡felicidades atrasadas!');
-                      }
-                      else{
-                           myApp.showPreloader('Mañana es su santoral, ¡Atento!');
-                      }
-                  }
+                  localStorage.setItem('santoralAyer', data.santoral.ayer);
+		          localStorage.setItem('santoralHoy', data.santoral.hoy);
+		          localStorage.setItem('santoralManiana', data.santoral.maniana);
+		          //localStorage.setItem('dolar', data.moneda.dolar);
+		          //localStorage.setItem('euro', data.moneda.euro);
+		          localStorage.setItem('uf', data.indicador.uf);
+                  localStorage.setItem('ipc', data.indicador.ipc);
+		          localStorage.setItem('utm', data.indicador.utm);
+		          localStorage.setItem('imacec', data.indicador.imacec);
                   myApp.hidePreloader();
-                  myApp.alert(data.info,'Inicio de Sesión');
+                  myApp.alert("Mensaje <3",'Inicio de Aplición');
                   window.location = "main.html";
           },
+          error: function (xhr, status) {
+              myApp.hidePreloader();
+              myApp.alert('Hubo un error con la conexión','Error');
+          }
       });
 }
+
