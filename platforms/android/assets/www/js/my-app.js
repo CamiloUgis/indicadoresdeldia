@@ -23,7 +23,7 @@ document.addEventListener('deviceready', function () {
     $('normal').html(localStorage.getItem('normal'));
     $('normal_maniana').html(localStorage.getItem('normal_maniana'));
     $('catalitico').html(localStorage.getItem('catalitico'));
-
+    $
 }, false);
 
 function recibe() {
@@ -37,8 +37,13 @@ function recibe() {
             localStorage.setItem('ayer', data.santoral.ayer);
             localStorage.setItem('hoy', data.santoral.hoy);
             localStorage.setItem('maniana', data.santoral.maniana);
-            //localStorage.setItem('dolar', data.moneda.dolar);
-            //localStorage.setItem('euro', data.moneda.euro);
+            if (data.moneda != null){
+                localStorage.setItem('dolar', data.moneda.dolar);
+                localStorage.setItem('euro', data.moneda.euro);
+            }else{
+                localStorage.setItem('dolar', 'No existen datos');
+                localStorage.setItem('euro', 'Mo existen datos');
+            }
             localStorage.setItem('uf', data.indicador.uf);
             localStorage.setItem('ipc', data.indicador.ipc);
             localStorage.setItem('utm', data.indicador.utm);
@@ -47,7 +52,6 @@ function recibe() {
             localStorage.setItem('normal_maniana', data.restriccion.normal_maniana[0]);
             localStorage.setItem('catalitico', data.restriccion.catalitico[0]);
             myApp.hidePreloader();
-            myApp.alert("Mensaje <3", 'Inicio de Aplición');
             window.location = "main.html";
         },
         error: function (xhr, status) {
@@ -56,4 +60,6 @@ function recibe() {
         }
     });
 }
+
+
 

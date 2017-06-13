@@ -43,57 +43,128 @@
     </head>
 
     <body>
-        <div class="statusbar-overlay"></div>
         <!-- Views -->
         <div class="views">
             <!-- Your main view, should have "view-main" class -->
             <div class="view view-main">
-                <!-- Top Navbar-->
-                <div class="navbar">
-                    <div class="navbar-inner">
-                        <!-- We need cool sliding animation on title element, so we have additional "sliding" class -->
-                        <div class="center sliding">Información del día</div>
-                    </div>
-                </div>
-                <!-- Pages container, because we use fixed-through navbar and toolbar, it has additional appropriate classes-->
-                <div class="pages navbar-through toolbar-through">
+                <!-- Pages container, because we use fixed navbar and toolbar, it has additional appropriate classes-->
+                <div class="pages navbar-fixed toolbar-fixed">
                     <!-- Page, "data-page" contains page name -->
                     <div data-page="index" class="page">
+
+                        <div class="navbar">
+                            <div class="navbar-inner">
+                                <div class="center">Indicadores diarios</div>
+                            </div>
+                        </div>
+
+                        <div class="toolbar">
+                            <div class="toolbar-inner">
+                                <!-- Toolbar links -->
+                                <a></a>
+                                <a href="" id="cerrar" class="link">Salir</a>
+                                <a></a>
+                            </div>
+                        </div>
+
                         <!-- Scrollable page content -->
                         <div class="page-content">
-                            <div id="init">
-                                <div class="content-block-title">Datos del día</div>
-                                <div class="content-block inset">
-                                    <div class="content-block-inner">
-                                        <p><b>Santoral Ayer:</b></p>
-                                        <p id="ayer" ></p>
-                                        <p><b>Santoral Hoy:</b></p>
-                                        <p id="hoy"></p>
-                                        <p><b>Santoral Mañana:</b></p>
-                                        <p id="maniana"></p>
-                                        <p><b>Valor UF:</b></p>
-                                        <p id="uf"></p>
-                                        <p><b>Valor IPC:</b></p>
-                                        <p id="ipc"></p>
-                                        <p><b>Valor UTM:</b></p>
-                                        <p id="utm"></p>
-                                        <p><b>Valor IMACEC:</b></p>
-                                        <p id="imacec"></p>
-                                        <p><b>Restricción Normal:</b></p>
-                                        <p id="normal"></p>
-                                        <p><b>Restricción Normal Mañana:</b></p>
-                                        <p id="normal_maniana"></p>
-                                        <p><b>Restricción Catalítico:</b></p>
-                                        <p id="catalitico"></p>
-                                    </div>
-                                </div>
+                            <!-- List View -->
+                            <div class="content-block-title">Lista de indicadores</div>
+                            <div class="list-block accordion-list">
+                                <ul>
+                                    <li class="accordion-item"><a href="#" class="item-content item-link">
+                                            <div class="item-inner">
+                                                <div class="item-title">Santoral <img src="res/Aureola_Render.png" width="15%"></div>
+                                            </div></a>
+                                        <div class="accordion-item-content">
+                                            <div class="content-block">
+                                                <p style="color:blue">Santorial ayer :<span style="color:black" id="ayer"></span></p>
+                                                <p style="color:blue">Santorial hoy :<span style="color:black" id="hoy"></span></p>
+                                                <p style="color:blue">Santorial manaña :<span style="color:black" id="maniana"></span></p>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li class="accordion-item"><a href="#" class="item-content item-link">
+                                            <div class="item-inner">
+                                                <div class="item-title">Moneda <img src="res/dolar.jpg" width="15%"></div>
+                                            </div></a>
+                                        <div class="accordion-item-content">
+                                            <div class="content-block">
+                                                <p style="color:green">Dolar :<span style="color:black" id="dolar"></span></p>
+                                                <p style="color:green">Euro :<span style="color:black" id="euro"></span></p>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li class="accordion-item"><a href="#" class="item-content item-link">
+                                            <div class="item-inner">
+                                                <div class="item-title">Indicador <img src="res/Indicadores.jpg" width="15%"></div>
+                                            </div></a>
+                                        <div class="accordion-item-content">
+                                            <div class="content-block">
+                                                <p style="color:darkgray">UF :<span style="color:black" id="uf"></span></p>
+                                                <p style="color:darkgray">IPC :<span style="color:black" id="ipc"></span></p>
+                                                <p style="color:darkgray">UTM :<span style="color:black" id="utm"></span></p>
+                                                <p style="color:darkgray">IMACEC :<span style="color:black" id="imacec"></span></p>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li class="accordion-item"><a href="#" class="item-content item-link">
+                                            <div class="item-inner">
+                                                <div class="item-title">Restricciones <img src="res/restriccion.jpg" width="10%"></div>
+                                            </div></a>
+                                        <div class="accordion-item-content">
+                                            <div class="content-block">
+                                                <p style="color:Red">Restricción Normal :<span style="color:black" id="normal"></span></p>
+                                                <p style="color:Red">Restricción Normal Mañana :<span style="color:black" id="normal_maniana"></span></p>
+                                                <p style="color:Red">Restricción Catalítico :<span style="color:black" id="catalitico"></span></p>
+                                            </div>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="page-content">
+                            <div class="content-block">
+                                <p><a href="#" class="open-ayer"></a></p>
+                                <p><a href="#" class="open-hoy"></a></p>
+                                <p><a href="#" class="open-maniana"></a></p>
+                            </div>
+                        </div>
+
+                        <div class="popup popup-ayer">
+                            <div class="content-block">
+                                <p><a href="#" class="close-popup">Cerrar</a></p>
+                                <p><b>Santorial</b></p>
+                                <p>Ayer fue tu santo!!!, esperamos que te hayas acordado</p>
+                                <img src="res/pensamiento.gif">
+                            </div>
+                        </div>
+
+                        <div class="popup popup-hoy">
+                            <div class="content-block">
+                                <p><a href="#" class="close-popup">Cerrar</a></p>
+                               <p><b>Santorial</b></p>
+                                <p>Muy feliz santo Felicidades !!!</p>
+                                <img src="res/baile.gif" width="98%">
+                            </div>
+                        </div>
+
+                        <div class="popup popup-maniana">
+                            <div class="content-block">
+                                <p><a href="#" class="close-popup">Cerrar</a></p>
+                                <p><b>Santorial</b></p>
+                                <p>Atento mañana, es el dia de tu santo. Muy Atento!!! </p>
+                                <img src="res/HomerSimpson211.jpg">
                             </div>
                         </div>
                     </div>
                 </div>
-
             </div>
+
         </div>
+
         <script type="text/javascript" src="cordova.js"></script>
         <script type="text/javascript" src="js/jquery-3.2.0.min.js"></script>
         <script type="text/javascript" src="js/framework7.min.js"></script>
